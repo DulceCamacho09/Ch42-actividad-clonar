@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles.css">
+  <title>Formulario</title>
+</head>
+<body>
+  <h1>Bienvenidos a mi fiesta</h1>
+  <h2>Por favor, confirmar asistencia:</h2>
+
+  <form class="formulario" id="registrationForm">
+    <label for="name">Nombre:</label>
+    <input type="text" name="name" id="name" required>
+    <br />
+    <label for="age">Edad:</label>
+    <input type="number" name="age" id="age" min="1" step="1" required>
+    <br />
+    <label for="nationality">Nacionalidad:</label>
+    <select name="nationality" id="nationality" required>
+      <option value="Ar">Argentina</option>
+      <option value="Mx">Mexicana</option>
+      <option value="Per">Peruana</option>
+      <option value="Vnzl">Venezolana</option>
+    </select>
+    <br />
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div>
+    <h2>Lista de invitados</h2>
+    <ul id="guestList"></ul>
+  </div>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita el envío del formulario
+
+      // Captura los valores del formulario
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const nationality = document.getElementById('nationality').value;
+      
+      // Crea un nuevo elemento de lista con los datos del invitado
+      const listItem = document.createElement('li');
+      listItem.textContent = `Nombre: ${name}, Edad: ${age}, Nacionalidad: ${nationality}`;
+      
+      // Agrega el nuevo elemento a la lista de invitados
+      document.getElementById('guestList').appendChild(listItem);
+
+      // Limpia los campos del formulario
+      document.getElementById('registrationForm').reset();
+    });
+  </script>
+</body>
+</html>
